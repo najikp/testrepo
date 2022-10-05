@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <!-- The image half -->
+        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+
+
+        <!-- The content half -->
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
+
+                <!-- Demo content-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-7 mx-auto">
+                            <h3 class="display-4">Wall Art </h3>
+                            <p class="text-muted mb-4">Login and explore !</p>
+                            <form action="/login" method="post">
+                                <div class="form-group mb-3">
+                                    <input id="inputEmail" type="email" placeholder="Email address" required=""
+                                        autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4"
+                                        name="email">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input id="inputPassword" type="password" placeholder="Password" required=""
+                                        class="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                                        name="password">
+                                </div>
+                                <div class="custom-control custom-checkbox mb-3 ">
+                                    <input id="customCheck1" type="checkbox" checked class="custom-control-input ">
+                                    <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                </div>
+                                {{!-- {{#if loginError}}   
+                                <p>Invalid username or password</p>
+                                {{/if}} --}}
+                                {{#if session.usernotfound}}
+                                <p class="text-danger">Invalid Username</p>
+                                {{/if}}
+                                {{#if session.wrongpassword}}
+                                <p class="text-danger">Invalid password</p>
+                                {{/if}}
+                                <button type="submit"
+                                    class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm"
+                                    style="width:20%">Log
+                                    in</button>
+                                <div class="text-center d-flex justify-content-between mt-4">
+                                    <p>Don't Have An Account ! <a href="/signup" class="font-italic text-danger"
+                                            type="submit">
+                                            <u>SignUp</u></a></p>
+                                </div>
+                            </form>
+                            {{!-- <button type="submit"
+                                class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign
+                                Up</button> --}}
+                        </div>
+                    </div>
+                </div><!-- End -->
+
+            </div>
+        </div><!-- End -->
+
+    </div>
+</div>
+<style>
+    .login,
+    .image {
+        min-height: 100vh;
+    }
+
+    .bg-image {
+        background-image: url('https://images.unsplash.com/photo-1608338167542-ad0c670edd0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8OHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60');
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #fa4e4e;
+}
+</style>

@@ -1,0 +1,154 @@
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+
+                <form class="mx-1 mx-md-4" method="post" action="/signup" id="myForm">
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <p class="text-dange"id="checkName"></p>
+                      
+                     
+                      
+                      <input type="text" id="name" required class="form-control" name="name"/>
+                      <label class="form-label" for="form3Example1c">Your Name</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <p class="text-dange"id="checkEmail"></p>
+                      <input type="email" id="email" required class="form-control" name="email" />
+                      <label class="form-label" for="form3Example3c">Your Email</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                       <p class="text-dange"id="checkPassword"></p>
+                      <input type="password" id="password" class="form-control" required name="password" />
+                      <label class="form-label" for="form3Example4c">Password</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <p class="text-dange"id="checkRepassword"></p>
+                      <input type="password" id="repassword" required class="form-control" name="re-password" />
+                      <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                    </div>
+                  </div>
+
+                  <div class="form-check d-flex justify-content-start mb-5">
+                    <input class="form-check-input me-2"  type="checkbox" value="" id="form2Example3c" />
+                    <label class="form-check-label" for="form2Example3">
+                      I agree all statements in <a href="#!" class="text text-danger">Terms of service</a>
+                    </label>
+                  </div>
+                  {{#if userAlreadyExist }}
+                  <P style="color:red">User Already Exist !</P>
+                  {{/if}}
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                   {{!-- <input type="submit" class="btn btn-danger btn-lg" value="Register"> --}}
+                   <button type="button" class="btn btn-danger btn-lg" onclick="login()">Register</button>
+                  </div>
+
+                </form>
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  {{!-- <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js">
+   $(document).ready(function() {
+$("#basicform").validate({
+  rules: {
+        password: {
+            required: true,
+            minlength: 3
+        },
+        re-password: {
+            required: true,
+            minlength: 3,
+            equalTo: "#password"
+        }
+    }
+  });
+
+
+});
+</script> --}}
+
+<script>
+  const login=()=>{
+
+    let name=document.getElementById("name").value;
+    const email=document.getElementById('email').value;
+    const password=document.getElementById('password').value;
+    const Repassword=document.getElementById('repassword').value;
+    let check;
+  
+    if(!name ){
+      document.getElementById('checkName').innerText="Enter Your Name";
+      check=false;
+    }else{
+      document.getElementById('checkName').innerText="";
+      check=true;
+    }
+    if(!email){
+      document.getElementById('checkEmail').innerText="Enter Your Email";
+      check=false;
+    }else{
+      document.getElementById('checkEmail').innerText="";
+      check=true;
+    }
+    if(!password){
+      document.getElementById('checkPassword').innerText="Enter A Password";
+      check=false;
+    }else{
+      document.getElementById('checkPassword').innerText="";
+      check=true;
+    }
+    if(!Repassword){
+      document.getElementById('checkRepassword').innerText="Enter Your Name";
+      check=false;
+    }else{
+      if(Repassword === password){
+        
+      document.getElementById('checkRepassword').innerText="";
+      check=true;
+      }else{
+        document.getElementById('checkRepassword').innerText="Enter passWord same as above";
+      check=false;
+
+      }
+    }
+    if(check){
+      document.getElementById('myForm').submit();
+    }
+    
+  }
+</script>
